@@ -1,0 +1,231 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 260 18% 5%;
+    --foreground: 260 10% 93%;
+
+    --card: 260 15% 9%;
+    --card-foreground: 260 10% 93%;
+
+    --popover: 260 15% 9%;
+    --popover-foreground: 260 10% 93%;
+
+    --primary: 340 55% 72%;
+    --primary-foreground: 260 18% 5%;
+
+    --secondary: 160 28% 58%;
+    --secondary-foreground: 260 18% 5%;
+
+    --muted: 260 12% 13%;
+    --muted-foreground: 260 10% 50%;
+
+    --accent: 340 55% 72%;
+    --accent-foreground: 260 18% 5%;
+
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 98%;
+
+    --success: 160 55% 48%;
+    --success-foreground: 260 18% 5%;
+
+    --warning: 38 90% 60%;
+    --warning-foreground: 260 18% 5%;
+
+    --border: 260 12% 16%;
+    --input: 260 12% 16%;
+    --ring: 340 55% 72%;
+
+    --radius: 0.875rem;
+
+    --sidebar-background: 260 15% 7%;
+    --sidebar-foreground: 260 10% 85%;
+    --sidebar-primary: 340 55% 72%;
+    --sidebar-primary-foreground: 260 18% 5%;
+    --sidebar-accent: 260 12% 14%;
+    --sidebar-accent-foreground: 260 10% 85%;
+    --sidebar-border: 260 12% 16%;
+    --sidebar-ring: 340 55% 72%;
+
+    /* Laira custom tokens */
+    --laira-rose: 340 55% 72%;
+    --laira-rose-glow: 340 60% 80%;
+    --laira-sage: 160 28% 58%;
+    --laira-sage-muted: 160 20% 40%;
+    --laira-surface: 260 15% 10%;
+    --laira-surface-hover: 260 15% 14%;
+    --laira-glass: 260 15% 12%;
+    --laira-glass-border: 260 12% 20%;
+    --laira-profit: 160 55% 48%;
+    --laira-loss: 0 65% 55%;
+
+    /* Gradients */
+    --gradient-rose: linear-gradient(135deg, hsl(340 55% 72%) 0%, hsl(350 50% 65%) 100%);
+    --gradient-sage: linear-gradient(135deg, hsl(160 28% 58%) 0%, hsl(170 35% 50%) 100%);
+    --gradient-surface: linear-gradient(180deg, hsl(260 15% 8%) 0%, hsl(260 18% 5%) 100%);
+    --gradient-glow-rose: radial-gradient(ellipse at 50% 0%, hsl(340 55% 72% / 0.08) 0%, transparent 60%);
+    --gradient-card: linear-gradient(135deg, hsl(260 15% 12% / 0.7) 0%, hsl(260 15% 8% / 0.5) 100%);
+    --gradient-orb: radial-gradient(circle, hsl(340 55% 72% / 0.6) 0%, hsl(340 60% 65% / 0.2) 40%, transparent 70%);
+    --gradient-laira-button: linear-gradient(135deg, hsl(340 55% 68%) 0%, hsl(350 50% 60%) 50%, hsl(340 45% 55%) 100%);
+
+    /* Shadows */
+    --shadow-rose: 0 0 40px hsl(340 55% 72% / 0.15);
+    --shadow-rose-strong: 0 0 60px hsl(340 55% 72% / 0.25);
+    --shadow-card: 0 4px 24px hsl(260 18% 3% / 0.5);
+    --shadow-elevated: 0 8px 40px hsl(260 18% 3% / 0.6);
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 3px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  /* Glass card */
+  .laira-glass {
+    background: linear-gradient(135deg, hsl(260 15% 12% / 0.6) 0%, hsl(260 15% 8% / 0.4) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid hsl(var(--laira-glass-border) / 0.4);
+    border-radius: var(--radius);
+  }
+
+  .laira-glass-hover {
+    background: linear-gradient(135deg, hsl(260 15% 12% / 0.6) 0%, hsl(260 15% 8% / 0.4) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid hsl(var(--laira-glass-border) / 0.4);
+    border-radius: var(--radius);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .laira-glass-hover:hover {
+    background: linear-gradient(135deg, hsl(260 15% 14% / 0.7) 0%, hsl(260 15% 10% / 0.5) 100%);
+    border-color: hsl(var(--laira-glass-border) / 0.7);
+    box-shadow: 0 4px 20px hsl(260 18% 3% / 0.4);
+  }
+
+  /* Laira glow button */
+  .laira-glow-button {
+    background: var(--gradient-laira-button);
+    box-shadow: 0 0 24px hsl(340 55% 72% / 0.3), 0 0 48px hsl(340 55% 72% / 0.1), inset 0 1px 0 hsl(0 0% 100% / 0.15);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .laira-glow-button:hover {
+    box-shadow: 0 0 32px hsl(340 55% 72% / 0.4), 0 0 64px hsl(340 55% 72% / 0.15), inset 0 1px 0 hsl(0 0% 100% / 0.2);
+    transform: translateY(-1px);
+  }
+
+  /* Chat bubbles */
+  .chat-bubble-ai {
+    background: linear-gradient(135deg, hsl(260 15% 14% / 0.9) 0%, hsl(260 15% 10% / 0.7) 100%);
+    border: 1px solid hsl(var(--laira-glass-border) / 0.4);
+    border-radius: 1.125rem 1.125rem 1.125rem 0.25rem;
+  }
+
+  .chat-bubble-user {
+    background: linear-gradient(135deg, hsl(340 50% 50% / 0.2) 0%, hsl(340 45% 40% / 0.15) 100%);
+    border: 1px solid hsl(340 55% 72% / 0.15);
+    border-radius: 1.125rem 1.125rem 0.25rem 1.125rem;
+  }
+
+  /* Wallet button override */
+  .wallet-adapter-button-trigger {
+    background: linear-gradient(135deg, hsl(260 15% 14%) 0%, hsl(260 15% 10%) 100%) !important;
+    border: 1px solid hsl(var(--laira-glass-border) / 0.5) !important;
+    border-radius: var(--radius) !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 0.8rem !important;
+    height: 2.5rem !important;
+    padding: 0 1rem !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    color: hsl(var(--foreground)) !important;
+  }
+  .wallet-adapter-button-trigger:hover {
+    background: linear-gradient(135deg, hsl(260 15% 18%) 0%, hsl(260 15% 14%) 100%) !important;
+    border-color: hsl(340 55% 72% / 0.3) !important;
+    box-shadow: 0 0 16px hsl(340 55% 72% / 0.1) !important;
+  }
+
+  .wallet-adapter-dropdown {
+    z-index: 100 !important;
+  }
+
+  /* Display font */
+  .font-display {
+    font-family: 'DM Sans', 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .laira-gradient-bg {
+    background: var(--gradient-surface);
+  }
+
+  .laira-glow-overlay {
+    background: var(--gradient-glow-rose);
+  }
+
+  .text-glow-rose {
+    text-shadow: 0 0 20px hsl(340 55% 72% / 0.4);
+  }
+}
+
+/* Keyframe animations */
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.15); opacity: 0.9; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes fadeSlideUp {
+  0% { transform: translateY(16px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulseRing {
+  0% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.2); opacity: 0; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+@keyframes typingDot {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-4px); }
+}
+
+@keyframes waveBar {
+  0%, 100% { height: 12px; }
+  50% { height: 28px; }
+}
